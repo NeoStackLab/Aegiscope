@@ -1,0 +1,31 @@
+name: False positive report
+description: Report an alert that appears incorrect or misleading.
+title: "[False positive]: "
+labels: ["false-positive"]
+body:
+  - type: markdown
+    attributes:
+      value: "Never attach raw event databases, credentials, private repository data, browser data, or unredacted paths."
+  - type: input
+    id: rule
+    attributes:
+      label: Alert or rule name
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Sanitized context
+      description: Explain the app behavior without revealing private data.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Which part of the evidence seems wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should the alert have said or done?

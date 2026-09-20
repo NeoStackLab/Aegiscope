@@ -1,0 +1,37 @@
+name: Bug report
+description: Report a reproducible issue in public materials or a released Aegiscope build.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include credentials, personal paths, repository contents, or unredacted telemetry."
+  - type: input
+    id: version
+    attributes:
+      label: Aegiscope version
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Windows version and environment
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: sanitized_evidence
+    attributes:
+      label: Sanitized evidence
+      description: Remove usernames, private paths, domains and all secret values.
