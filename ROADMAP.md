@@ -2,16 +2,16 @@
 
 This roadmap describes intended order, not a delivery commitment. Scope may change as Windows telemetry is validated.
 
-## Foundation — current
+## Development — current
 
-- Separate public product materials from private source.
-- Define evidence vocabulary, privacy boundaries and capability status.
-- Design a bilingual, dark-first desktop experience.
+- Repository boundary, evidence vocabulary, privacy boundary and bilingual desktop foundation are in place.
+- Private development builds have partial sampled process lifecycle and TCP endpoint visibility.
+- Publisher/signature identity, traffic bytes, DNS mapping and file access remain unimplemented; see the capability matrix.
 
 ## Early development
 
-- Secure desktop shell and local storage.
-- Process identity and lifecycle.
+- Complete remaining process identity and lifecycle coverage.
+- Validate the current sampled network endpoint view across supported Windows versions.
 - Network destinations and qualified per-process traffic attribution.
 - Sensitive-file access, aggregation and explicit platform limits.
 

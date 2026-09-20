@@ -30,7 +30,7 @@ Aegiscope will not claim a file was uploaded unless evidence establishes that fa
 
 ## Status
 
-Aegiscope is in **Phase 0: repository and architecture foundation**. No production monitoring build or installer is published. See the [detection capability matrix](docs/detection-capabilities.md).
+Aegiscope is in development; **no production monitoring build or installer has been released**. Current unreleased Windows development builds sample process inventory and TCP endpoint metadata. They do not collect file access, DNS names or per-process traffic byte counts. See the [detection capability matrix](docs/detection-capabilities.md) for the exact limits.
 
 ## Principles
 
