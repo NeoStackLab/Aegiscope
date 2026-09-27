@@ -6,7 +6,7 @@ No. It is being designed as an Application Privacy Observatory that explains app
 
 ## Is it available?
 
-No production monitor or installer has been published. Private development builds currently sample process inventory and TCP endpoint metadata only; see the [capability matrix](detection-capabilities.md) for coverage and limits.
+No production monitor or installer has been published. Private development builds contain sampled process and endpoint inventory plus a default-off file metadata pipeline that has not been validated against live Windows ETW records. See the [capability matrix](detection-capabilities.md) for coverage and limits.
 
 ## Is the source open?
 
