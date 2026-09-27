@@ -1,23 +1,25 @@
 # Detection Capability Matrix
 
-**Status: Development, Phase 3 in progress.** No production monitoring build is released. Current private Windows development builds include sampled process inventory and TCP endpoint metadata; treat these as development capabilities, not a production monitoring guarantee.
+**Status: Development, Phase 4 in progress.** No production monitoring build is released. Current private Windows development builds include sampled process inventory, TCP connection metadata, UDP local bindings and a default-off sensitive-file ETW pipeline. These are development capabilities, not a production monitoring guarantee; the file ETW path has not been validated against live Windows records.
 
 | Capability | Current status | Boundary |
 |---|---|---|
 | Running process inventory, PID, parent PID, name and reported start time | PARTIAL | Private Windows development build samples with a user-mode process API every two seconds and caps the snapshot at 1,024 processes. A complete process audit trail is not claimed. |
-| Process start/stop changes | PARTIAL | Inferred by comparing complete snapshots. Short-lived processes can be missed; events are kept in app-session memory only. |
-| Publisher, signature, hash and version | UNSUPPORTED | Not collected or validated. |
-| Sensitive file access attribution | UNSUPPORTED | No collector. Windows audit events require suitable audit policy and object SACLs. |
-| Git history mass access | UNSUPPORTED | Classifier and aggregation are design only. |
+| Process start/stop changes | PARTIAL | Inferred by comparing complete snapshots. Short-lived processes can be missed; validated transitions are retained locally for up to 30 days and 100,000 rows. |
+| Publisher, signature, hash and version | PARTIAL | The private development build reads local version resources, checks embedded Authenticode signatures without online revocation lookup, and hashes bounded local executable files. Protected paths and inaccessible, oversized or changing files can remain unavailable. Live Windows compatibility and trust edge cases need more validation. |
+| Sensitive file access attribution | PARTIAL | A default-off System IO ETW metadata pipeline is connected to settings, bounded local summaries and a Sensitive Data view. It does not read file contents and has not been validated with live ETW records; permissions, attribution, event loss and path coverage remain open. Windows audit events require suitable audit policy and object SACLs. |
+| Git history mass access | PARTIAL | The private development build can classify and aggregate Git-history path metadata through the opt-in file pipeline. No live Windows ETW validation has been completed; it does not establish that file contents were consumed. |
 | Secret-value inspection | UNSUPPORTED | Intentionally excluded; intended model is metadata/path classification. |
 | Current IPv4/IPv6 TCP endpoint metadata by PID | PARTIAL | Private Windows development build samples IP Helper owner-PID tables every two seconds, omits listeners and caps display at 2,048 rows. It is not a connection audit trail and can miss short-lived connections. Process name/path is joined by PID and can be incomplete or stale. |
+| Current IPv4/IPv6 UDP local endpoint metadata by PID | PARTIAL | The private development build samples IP Helper owner-PID tables every two seconds and caps display at 2,048 rows. Windows can report PID 0 when ownership is unavailable. These are local bindings only, not remote peers or proof of datagram traffic; live visibility needs validation. |
 | UDP remote peer by process | UNSUPPORTED | The documented owner-PID UDP table reports a local endpoint, not a remote peer. |
 | Per-process uploaded/downloaded bytes | UNSUPPORTED | Not collected. System-wide counters are not used as process totals. |
 | DNS name mapping | UNSUPPORTED | No DNS collector or validated connection attribution. |
 | Persistence changes | UNSUPPORTED | No registry, service, task or startup-folder watcher. |
 | Camera/microphone access attribution | UNSUPPORTED | No general product event feed implemented for arbitrary desktop processes. |
 | Clipboard or screen capture attribution | UNSUPPORTED | No reliable monitor implemented. |
-| Correlated privacy alerts | UNSUPPORTED | Rule model only; no event pipeline. |
+| Sensitive file read followed by a newly observed TCP endpoint | PARTIAL | The private development build has one conservative, low-confidence temporal co-occurrence rule. Its opt-in file source has not been validated live; a first-observed endpoint is not proof that a connection began after a read, and the alert does not claim an upload or payload contents. |
+| Git history → large artifact → remote endpoint → outbound traffic | PARTIAL | A development-only simulation runs a high-confidence synthetic benchmark through the correlation engine. Production telemetry does not yet provide validated large-artifact events or per-process traffic byte counts, so this high-risk rule cannot fire from live product telemetry. |
 | Block network action | UNSUPPORTED | No enforcement component; UI must not show a working block action. |
 | Exact contents of encrypted HTTPS payloads | UNSUPPORTED | Not visible from connection metadata; decryption is not planned. |
 
