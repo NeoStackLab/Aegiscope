@@ -5,21 +5,23 @@ This roadmap describes intended order, not a delivery commitment. Scope may chan
 ## Development — current
 
 - Repository boundary, evidence vocabulary, privacy boundary and bilingual desktop foundation are in place.
-- Private development builds have partial sampled process lifecycle and TCP endpoint visibility.
-- Publisher/signature identity, traffic bytes, DNS mapping and file access remain unimplemented; see the capability matrix.
+- Private development builds include process identity metadata and lifecycle sampling; file version, local Authenticode, executable hash and redacted command line remain partial and need broader Windows validation.
+- TCP endpoints and UDP local bindings are sampled. Optional elevated TCP byte counters and DNS query-name collection exist, but live coverage is incomplete; UDP remote peers and DNS-to-process/connection attribution are unavailable.
+- Sensitive-path classification, protected-folder notifications, metadata-size snapshots and a default-off File ETW pipeline exist. Live File ETW and elevated TCP counter validation remain open.
+- Production correlation, saved rules, nine deterministic development scenarios, local reports and selected persistence snapshots exist with the limits in the [capability matrix](docs/detection-capabilities.md). Simulations are not evidence of live collector coverage.
 
 ## Early development
 
-- Complete remaining process identity and lifecycle coverage.
-- Validate the current sampled network endpoint view across supported Windows versions.
-- Network destinations and qualified per-process traffic attribution.
-- Sensitive-file access, aggregation and explicit platform limits.
+- Validate process identity and lifecycle behavior on more supported Windows versions and protected-process cases.
+- Validate optional TCP byte counters under an authorized elevated token and confirm source coverage.
+- Validate File ETW and protected-folder notification coverage, permission behavior and load across supported Windows builds and filesystems.
+- Continue improving DNS, UDP and short-lived connection visibility only where reliable process attribution can be demonstrated.
 
 ## Correlation
 
-- Explainable rules, incidents and observed/inferred/unknown evidence.
-- Deterministic simulation scenarios for development and demos.
-- Bounded queues, retention and event summaries.
+- Expand production evidence paths and validate correlation against controlled live telemetry.
+- Keep deterministic development scenarios separate from collector events.
+- Continue bounded queues, retention and event summaries under long-running and burst conditions.
 
 ## Extended observability
 
@@ -27,6 +29,6 @@ Evaluate credential and browser-profile metadata access, staging artifacts, arch
 
 ## Release readiness
 
-Build a private updater that validates trusted release metadata and versions, verifies checksum and code signing, and never executes an unverified binary. Publish a signed Windows beta only after release review.
+Provision protected release signing material, validate the signed updater flow and user-started recovery with signed Windows packages, finish visual/accessibility review and create the six approved showcase screenshots. Publish a signed Windows beta only after the release checklist passes.
 
 There is no promised date. Payment and subscription are outside the initial functional release.

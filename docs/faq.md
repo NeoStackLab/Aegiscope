@@ -6,7 +6,7 @@ No. It is being designed as an Application Privacy Observatory that explains app
 
 ## Is it available?
 
-No production monitor or installer has been published. Private development builds contain sampled process and endpoint inventory plus a default-off file metadata pipeline that has not been validated against live Windows ETW records. See the [capability matrix](detection-capabilities.md) for coverage and limits.
+No production monitor or installer has been published. Private development builds include sampled process and endpoint inventory, selected local persistence snapshots, optional elevated TCP byte counters, opt-in DNS query names, protected-folder notifications and a default-off file ETW pipeline. Several sources have not been validated in live product monitoring; see the [capability matrix](detection-capabilities.md) for exact coverage and limits.
 
 ## Is the source open?
 
@@ -14,7 +14,7 @@ No. **Source code is currently private.** This repository publishes product info
 
 ## Does Aegiscope upload my files or history?
 
-There is no production collector yet. The intended default is local analysis without behavioral-history upload. Any future optional sharing must be documented and consent-based.
+No production build has been released. Private development builds perform their current analysis locally; behavioral history is not uploaded by default. Any future optional sharing must be documented and consent-based.
 
 ## Can it prove an app uploaded a particular file?
 
@@ -22,7 +22,7 @@ Not from ordinary encrypted connection metadata. Access and traffic should be re
 
 ## Will it block applications?
 
-Not in Phase 0. A block action appears only if actual enforcement is implemented and tested.
+No. Network blocking is not implemented, so the product does not offer a working block action.
 
 ## Which languages are planned?
 

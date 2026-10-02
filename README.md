@@ -30,7 +30,7 @@ Aegiscope will not claim a file was uploaded unless evidence establishes that fa
 
 ## Status
 
-Aegiscope is in development; **no production monitoring build or installer has been released**. Current private Windows development builds sample process inventory, TCP connection metadata and UDP local bindings. They also contain a default-off sensitive-file ETW pipeline that has not been validated against live Windows events. UDP remote peers, DNS names and per-process traffic byte counts are not available. See the [detection capability matrix](docs/detection-capabilities.md) for the exact limits.
+Aegiscope is in development; **no production monitoring build or installer has been released**. Current private Windows development builds sample process identity and TCP connection metadata, report UDP local bindings, and include optional per-connection TCP byte counters and DNS query-name collection. The byte counters require an elevated Windows token; neither they nor the default-off sensitive-file ETW pipeline have been validated in live product monitoring. DNS queries are not attributed to a process or joined to a connection, and UDP remote peers/byte totals remain unavailable. Protected-folder notifications can provide current file-size metadata without identifying the writer. These partial signals can feed cautious local correlation, but do not prove file creation, file contents or what encrypted traffic carried. See the [detection capability matrix](docs/detection-capabilities.md) for exact limits.
 
 ## Principles
 
