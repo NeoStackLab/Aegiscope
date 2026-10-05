@@ -6,9 +6,9 @@ This roadmap describes intended order, not a delivery commitment. Scope may chan
 
 - Repository boundary, evidence vocabulary, privacy boundary and bilingual desktop foundation are in place.
 - Private development builds include process identity metadata and lifecycle sampling; file version, local Authenticode, executable hash and redacted command line remain partial and need broader Windows validation.
-- TCP endpoints and UDP local bindings are sampled. Optional elevated TCP byte counters and DNS query-name collection exist, but live coverage is incomplete; UDP remote peers and DNS-to-process/connection attribution are unavailable.
+- TCP endpoints and UDP local bindings are sampled. Optional elevated TCP counters, separate TCP/UDP user-ETW event-byte estimates, and DNS query-name collection exist with limited loopback/host validation; UDP remote peers and DNS name matches remain partial and DNS-to-process attribution is unavailable.
 - Sensitive-path classification, protected-folder notifications, metadata-size snapshots and a default-off File ETW pipeline exist. Live File ETW and elevated TCP counter validation remain open.
-- Production correlation, saved rules, nine deterministic development scenarios, local reports and selected persistence snapshots exist with the limits in the [capability matrix](docs/detection-capabilities.md). Simulations are not evidence of live collector coverage.
+- Production correlation, saved rules, ten deterministic development scenarios, local reports and selected persistence snapshots exist with the limits in the [capability matrix](docs/detection-capabilities.md). Simulations are not evidence of live collector coverage.
 
 ## Early development
 
