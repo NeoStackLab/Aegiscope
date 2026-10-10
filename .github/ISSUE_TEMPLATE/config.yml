@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability reporting
+    url: https://github.com/NeoStackLab/Aegiscope/security/policy
+    about: Read the private reporting guidance. Do not post exploit details in a public issue.
+  - name: Product documentation and FAQ
+    url: https://github.com/NeoStackLab/Aegiscope/tree/main/docs
+    about: Review current capabilities and limitations before opening an issue.
