@@ -11,7 +11,7 @@ Aegiscope's default analysis model is local-first: collect only metadata needed 
 
 ## User control
 
-Settings should make each category and protected location explicit. Retention and deletion must be visible. When retention removes local records, Aegiscope asks SQLite to overwrite deleted ordinary-table content in the database pages. This reduces residual data in the closed database file but is not a forensic-erasure guarantee: older WAL frames may remain until checkpoint/close, and backups, system snapshots, swap and SSD remapping are outside Aegiscope's control. Any optional diagnostics must state fields, purpose, destination and retention before consent.
+Settings should make each category and protected location explicit. Retention and deletion must be visible. When retention removes local records, Aegiscope asks SQLite to overwrite deleted ordinary-table content in the database pages. This reduces residual data in the closed database file but is not a forensic-erasure guarantee: older WAL frames may remain until checkpoint/close, and backups, system snapshots, swap and SSD remapping are outside Aegiscope's control. The main local database files have per-writer size ceilings; at a ceiling, new evidence may fail to save and the affected history may be incomplete. WAL files can temporarily exceed their post-checkpoint target if a reader delays checkpointing. A database already above its ceiling is preserved rather than automatically shrunk. Any optional diagnostics must state fields, purpose, destination and retention before consent.
 
 ## Product honesty
 
